@@ -6,6 +6,10 @@
 /out-tsc
 /bazel-out
 /database
+/build/database/
+keys.js
+jeys.js.map
+
 
 # Node
 /node_modules
