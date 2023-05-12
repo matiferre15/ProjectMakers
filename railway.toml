@@ -1,0 +1,8 @@
+# railway.toml
+[runtime]
+name = "nodejs"
+version = "16"
+
+[build]
+frontend = "false"
+backend = "scheduler_app/server"
