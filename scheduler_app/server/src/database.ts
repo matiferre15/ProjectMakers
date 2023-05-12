@@ -1,5 +1,5 @@
 import * as mysql from 'mysql2'
-import keys from './keys';
+import keys from '../database/keys';
 
 const pool = mysql.createPool(keys.database);
 
