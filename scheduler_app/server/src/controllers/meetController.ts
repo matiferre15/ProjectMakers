@@ -30,6 +30,9 @@ class RoleController{
         await pool.promise().query('DELETE FROM roles WHERE id = ?', [id]);
         res.json({message: 'El rol ha sido eliminado'})
     }
+
+    const = 0;
+    
 }
 
 export const roleController = new RoleController();

@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userController = void 0;
 const database_1 = __importDefault(require("../database"));
 class UserController {
+    constructor() {
+        this.const = 20;
+    }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const [users] = yield database_1.default.promise().query('SELECT * FROM usuarios');
@@ -31,8 +34,23 @@ class UserController {
             res.json(users);
         });
     }
-    getById(req, res) {
-        res.json({ text: 'Listando una meet' });
+    getByUsername(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { user } = req.params;
+            try {
+                const [users] = yield database_1.default.promise().query('SELECT * FROM usuarios WHERE nombre = ?', [user]);
+                if (users.length > 0) {
+                    res.json(users[0]);
+                }
+                else {
+                    res.status(404).json({ message: 'Usuario no encontrado' });
+                }
+            }
+            catch (error) {
+                console.log(error);
+                res.status(500).json({ message: 'Error al buscar el usuario' });
+            }
+        });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -40,6 +58,7 @@ class UserController {
             res.json({ message: 'Usuario creado' });
         });
     }
+    ;
     put(req, res) {
         res.json({ text: 'Actualizando la meet numero: ' + req.params.id });
     }

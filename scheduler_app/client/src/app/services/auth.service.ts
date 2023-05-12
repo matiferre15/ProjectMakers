@@ -14,6 +14,11 @@ export class AuthService {
   getUsuarioLogueado(user: string, password:string){
     return this.http.get(`${this.API_URI}/users/${user}/${password}`)
   }
+
+  userExists(user: string){
+    return this.http.get(`${this.API_URI}/users/${user}`)
+  }
+
     
     
   }

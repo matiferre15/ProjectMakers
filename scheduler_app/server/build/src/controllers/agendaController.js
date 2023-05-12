@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.agendaController = void 0;
 const database_1 = __importDefault(require("../database"));
 class AgendaController {
+    constructor() {
+        this.const = 200;
+    }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const [roles] = yield database_1.default.promise().query('SELECT * FROM roles');

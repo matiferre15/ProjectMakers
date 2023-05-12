@@ -4,11 +4,12 @@ import {CalendarioComponent} from './components/calendario/calendario.component'
 import { AgendaComponent } from './components/agenda/agenda.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReunionComponent } from './components/reunion/reunion.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/calendario',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   }
 ];
 

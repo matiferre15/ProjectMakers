@@ -17,6 +17,8 @@ class AgendaController{
         res.json(agenda);
     }
     
+    const = 200;
+
     public async create (req: Request, res: Response): Promise<void> {
         await pool.promise().query('INSERT INTO roles set ?', [req.body]);
         res.json({message: 'Rol creado'})    

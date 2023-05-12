@@ -17,15 +17,28 @@ class UserController{
         res.json(users); 
     }
 
-    public getById (req: Request, res: Response) {
-        res.json({text: 'Listando una meet'})
-    }
-    
+    public async getByUsername(req: Request, res: Response) {
+        const { user } = req.params;
+        try {
+          const [users] = await pool.promise().query('SELECT * FROM usuarios WHERE nombre = ?', [user]);
+          if (users.length > 0) {
+            res.json(users[0]);
+          } else {
+            res.status(404).json({ message: 'Usuario no encontrado' });
+          }
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({ message: 'Error al buscar el usuario' });
+        }
+      }
+
     public async create (req: Request, res: Response): Promise<void> {
         await pool.promise().query('INSERT INTO usuarios set ?', [req.body]);
         res.json({message: 'Usuario creado'})
         
-    }
+    };
+    
+    const = 20;
 
     public put(req: Request, res: Response) {
         res.json({text: 'Actualizando la meet numero: ' + req.params.id})

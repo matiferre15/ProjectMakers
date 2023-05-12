@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.roleController = void 0;
 const database_1 = __importDefault(require("../database"));
 class RoleController {
+    constructor() {
+        this.const = 0;
+    }
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const [roles] = yield database_1.default.promise().query('SELECT * FROM reuniones');

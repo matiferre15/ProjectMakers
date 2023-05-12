@@ -9,11 +9,11 @@ class UserRoutes {
     }
     config() {
         this.router.get('/', userController_1.userController.list);
-        this.router.get('/:id', userController_1.userController.getById);
         this.router.post('/', userController_1.userController.create);
         this.router.put('/:id', userController_1.userController.put);
         this.router.delete('/:id', userController_1.userController.delete);
         this.router.get('/:username/:password', userController_1.userController.auth);
+        this.router.get('/:user', userController_1.userController.getByUsername);
     }
 }
 const userRoutes = new UserRoutes();

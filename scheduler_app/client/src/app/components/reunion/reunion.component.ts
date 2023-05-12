@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ReunionComponent {
 
   meetingForm: FormGroup;
+  participants: string[] = [];
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -24,6 +25,14 @@ export class ReunionComponent {
 
   onSubmit() {
     // Aquí puedes enviar los datos del formulario al servidor
+  }
+
+  addParticipant() {
+    const participant = this.meetingForm.controls.participants.value;
+    if (participant && !this.participants.includes(participant)) {
+      this.participants.push(participant);
+      this.meetingForm.controls.participants.setValue('');
+    }
   }
 
   disableDate(){
