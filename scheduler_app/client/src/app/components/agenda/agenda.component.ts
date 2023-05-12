@@ -15,7 +15,7 @@ export class AgendaComponent implements OnInit {
   constructor(private agendaService: AgendaService) { }
 
   ngOnInit(): void {
-    this.agendaService.getAgenda('2').subscribe(
+    this.agendaService.getAgenda('1').subscribe(
       res=> {
         this.agenda = res;
       },

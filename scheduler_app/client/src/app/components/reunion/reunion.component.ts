@@ -19,6 +19,7 @@ export class ReunionComponent {
 
   meetingForm: FormGroup;
   participants: string[] = [];
+  disableCreateMeeting = true;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private reunionService: ReunionService) { }
 
@@ -31,7 +32,20 @@ export class ReunionComponent {
       time: [''],
       participants: ['']
     });
-  }
+
+    this.meetingForm.valueChanges.subscribe((value) => {
+      const title = value.title;
+      const description = value.description;
+      const date = value.date;
+      const time = value.time;
+      const participants = this.participants;
+      
+      // Comprueba si se han completado todos los campos y se ha agregado al menos un participante
+      this.disableCreateMeeting = !title || !description || !date || !time || participants.length === 0;
+    });
+  };
+
+  
 
   onSubmit() {
     const title = this.meetingForm.value.title;

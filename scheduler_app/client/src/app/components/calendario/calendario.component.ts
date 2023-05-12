@@ -42,10 +42,7 @@ export class CalendarioComponent implements OnInit {
       console.log('Reunion:', reunion); // agregar log para verificar reunion
       const evento: CalendarEvent = {
         title: reunion.nombre,
-        start: new Date(reunion.fecha),
-        meta: {
-          reunion: reunion
-        }
+        start: new Date(reunion.fecha)
       };
       events.push(evento);
     });
