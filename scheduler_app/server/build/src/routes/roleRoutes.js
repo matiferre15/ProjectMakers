@@ -17,4 +17,4 @@ class RoleRoutes {
 }
 const roleRoutes = new RoleRoutes();
 exports.default = roleRoutes.router;
-//# sourceMappingURL=meetRoutes.js.map
+//# sourceMappingURL=roleRoutes.js.map

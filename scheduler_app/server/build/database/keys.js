@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     database: {
         database: 'project_scheduler',
-        user: 'e1d1w338edx36n6078cc',
+        user: 'j0b2i76pd00ttmvz8yot',
         host: 'aws.connect.psdb.cloud',
+        password: 'pscale_pw_cgFBVOc1y4wNQiyMpCTBBRWQ7Ef7TC0fp49XVsvVCb3',
         dateStrings: true,
-        password: 'pscale_pw_Tmx28CfSw6L0vbMzsCDAMYBAorwwJU0YNkKgVVR1quu',
         ssl: {
             rejectUnauthorized: true
         }

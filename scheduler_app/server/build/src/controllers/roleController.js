@@ -17,7 +17,7 @@ const database_1 = __importDefault(require("../database"));
 class RoleController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const [roles] = yield database_1.default.promise().query('SELECT * FROM reuniones');
+            const [roles] = yield database_1.default.promise().query('SELECT * FROM roles');
             console.log(roles);
             res.json(roles);
         });
@@ -47,4 +47,4 @@ class RoleController {
     }
 }
 exports.roleController = new RoleController();
-//# sourceMappingURL=meetController.js.map
+//# sourceMappingURL=roleController.js.map

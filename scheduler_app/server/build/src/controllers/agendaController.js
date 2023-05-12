@@ -12,18 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.roleController = void 0;
+exports.agendaController = void 0;
 const database_1 = __importDefault(require("../database"));
-class RoleController {
+class AgendaController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const [roles] = yield database_1.default.promise().query('SELECT * FROM reuniones');
+            const [roles] = yield database_1.default.promise().query('SELECT * FROM roles');
             console.log(roles);
             res.json(roles);
         });
     }
-    getById(req, res) {
-        res.json({ text: 'Listando un rol' });
+    getByUserId(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const [agenda] = yield database_1.default.promise().query('SELECT reuniones.nombre, reuniones.fecha FROM reuniones ' +
+                'INNER JOIN participantes on participantes.reunion_id = reuniones.id INNER JOIN usuarios on participantes.usuario_id = usuarios.id ' +
+                'WHERE usuarios.id = ?;', [id]);
+            res.json(agenda);
+        });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -46,5 +52,5 @@ class RoleController {
         });
     }
 }
-exports.roleController = new RoleController();
-//# sourceMappingURL=meetController.js.map
+exports.agendaController = new AgendaController();
+//# sourceMappingURL=agendaController.js.map

@@ -12,39 +12,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.roleController = void 0;
+exports.userController = void 0;
 const database_1 = __importDefault(require("../database"));
-class RoleController {
+class UserController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const [roles] = yield database_1.default.promise().query('SELECT * FROM reuniones');
-            console.log(roles);
-            res.json(roles);
+            const [users] = yield database_1.default.promise().query('SELECT * FROM usuarios');
+            console.log(users);
+            res.json(users);
+        });
+    }
+    auth(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { username, password } = req.params;
+            const [users] = yield database_1.default.promise().query('SELECT * FROM usuarios WHERE nombre = ? AND password = ?', [username, password]);
+            console.log(users);
+            res.json(users);
         });
     }
     getById(req, res) {
-        res.json({ text: 'Listando un rol' });
+        res.json({ text: 'Listando una meet' });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.promise().query('INSERT INTO roles set ?', [req.body]);
-            res.json({ message: 'Rol creado' });
+            yield database_1.default.promise().query('INSERT INTO usuarios set ?', [req.body]);
+            res.json({ message: 'Usuario creado' });
         });
     }
     put(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield database_1.default.promise().query('UPDATE roles set ? WHERE id = ?', [req.body, id]);
-            res.json({ message: 'Rol actualizado' });
-        });
+        res.json({ text: 'Actualizando la meet numero: ' + req.params.id });
     }
     delete(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield database_1.default.promise().query('DELETE FROM roles WHERE id = ?', [id]);
-            res.json({ message: 'El rol ha sido eliminado' });
-        });
+        res.json({ text: 'Eliminando la meet numero: ' + req.params.id });
     }
 }
-exports.roleController = new RoleController();
-//# sourceMappingURL=meetController.js.map
+exports.userController = new UserController();
+//# sourceMappingURL=userController.js.map

@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ReunionComponent } from './components/reunion/reunion.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     NavigationComponent,
     CalendarioComponent,
     AgendaComponent,
-    LoginComponent
+    LoginComponent,
+    ReunionComponent
   ],
   imports: [
     BrowserModule,
