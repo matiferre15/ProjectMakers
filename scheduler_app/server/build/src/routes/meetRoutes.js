@@ -1,20 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const roleController_1 = require("../controllers/roleController");
-class RoleRoutes {
+const meetController_1 = require("../controllers/meetController");
+class MeetRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
         this.config();
     }
     config() {
-        this.router.get('/', roleController_1.roleController.list);
-        this.router.get('/:id', roleController_1.roleController.getById);
-        this.router.post('/', roleController_1.roleController.create);
-        this.router.put('/:id', roleController_1.roleController.put);
-        this.router.delete('/:id', roleController_1.roleController.delete);
+        this.router.post('/', meetController_1.meetController.create);
     }
 }
-const roleRoutes = new RoleRoutes();
-exports.default = roleRoutes.router;
+const meetRoutes = new MeetRoutes();
+exports.default = meetRoutes.router;
 //# sourceMappingURL=meetRoutes.js.map

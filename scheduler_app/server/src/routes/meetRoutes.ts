@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { roleController } from '../controllers/roleController';
+import { meetController } from '../controllers/meetController';
 
-class RoleRoutes{
+class MeetRoutes{
     public router: Router = Router();
 
     constructor(){
@@ -9,13 +9,9 @@ class RoleRoutes{
     }
 
     config(): void{
-        this.router.get('/', roleController.list);
-        this.router.get('/:id', roleController.getById);
-        this.router.post('/', roleController.create);
-        this.router.put('/:id', roleController.put)
-        this.router.delete('/:id', roleController.delete)
+        this.router.post('/', meetController.create);
     }
 }
 
-const roleRoutes = new RoleRoutes();
-export default roleRoutes.router  ;
+const meetRoutes = new MeetRoutes();
+export default meetRoutes.router  ;

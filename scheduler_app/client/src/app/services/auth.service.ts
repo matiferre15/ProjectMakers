@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +18,24 @@ export class AuthService {
     return this.http.get(`${this.API_URI}/users/${user}/${password}`)
   }
 
-  userExists(user: string){
-    return this.http.get(`${this.API_URI}/users/${user}`)
+  userExists(username: string): Observable<boolean> {
+    return this.http.get(`${this.API_URI}/users/${username}`).pipe(
+      map((response: any) => {
+        // Si la respuesta es 200 (OK), el usuario existe
+        console.log('El usuario existe:', response);
+        return true;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        // Si la respuesta es 404 (Not Found), el usuario no existe
+        console.error('El usuario no existe:', error);
+        return throwError(false);
+      })
+    );
   }
+}
 
     
     
-  }
   
 
 
