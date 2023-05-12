@@ -6,4 +6,4 @@ version = "16"
 
 [build]
 frontend = "false"
-backend = "scheduler_app/server"
+backend = "scheduler_app/server/"
