@@ -11,7 +11,7 @@ class UserController{
 
     public async auth (req: Request, res: Response) {
         console.log(req.body);
-        const {username, password} = req.params
+        const {username, password} = req.body;
         const [users] = await pool.promise().query('SELECT * FROM usuarios WHERE nombre = ? AND password = ?', [username, password]);
         console.log(users);
         res.json(users); 

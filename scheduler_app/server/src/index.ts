@@ -6,6 +6,7 @@ import userRoutes from './routes/userRoutes';
 import roleRoutes from './routes/roleRoutes';
 import agendaRoutes from './routes/agendaRoutes';
 import meetRoutes from './routes/meetRoutes';
+import loginRoutes from './routes/loginRoutes';
 
 class Server {
  
@@ -31,6 +32,7 @@ class Server {
         this.app.use('/api/roles', roleRoutes)
         this.app.use('/api/agenda', agendaRoutes)
         this.app.use('/api/meet', meetRoutes)
+        this.app.use('/api/login', loginRoutes)
     }
 
     start() : void {

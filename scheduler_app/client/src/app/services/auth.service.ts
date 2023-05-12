@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -10,12 +10,34 @@ import { Observable, throwError } from 'rxjs';
 })
 export class AuthService {
 
+  private _userId: string;
+  private _loginSuccess: boolean;
+
   API_URI = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
-  getUsuarioLogueado(user: string, password:string){
-    return this.http.get(`${this.API_URI}/users/${user}/${password}`)
+  getUsuarioLogueado(userData: any){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const url = `${this.API_URI}/login`;
+    return this.http.post(url, userData, { headers })
+  }
+
+  getLoginSuccess(): boolean {
+    return this._loginSuccess;
+  }
+
+  setLoginSuccess(loginSuccess: boolean) {
+    this._loginSuccess = loginSuccess;
+  }
+
+
+  getUserId(): string {
+    return this._userId;
+  }
+
+  setUserId(userId: string) {
+    this._userId = userId;
   }
 
   userExists(username: string): Observable<boolean> {

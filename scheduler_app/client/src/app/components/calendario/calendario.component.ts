@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { Reunion } from 'src/app/models/Reunion';
 import { AgendaService } from 'src/app/services/agenda.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-calendario',

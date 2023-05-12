@@ -28,7 +28,7 @@ class UserController {
     auth(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
-            const { username, password } = req.params;
+            const { username, password } = req.body;
             const [users] = yield database_1.default.promise().query('SELECT * FROM usuarios WHERE nombre = ? AND password = ?', [username, password]);
             console.log(users);
             res.json(users);

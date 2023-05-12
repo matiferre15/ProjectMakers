@@ -8,6 +8,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { AgendaComponent } from './components/agenda/agenda.component';
 import { AgendaService } from './services/agenda.service';
+import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -35,7 +36,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [
     AgendaService,
-    LoginComponent
+    LoginComponent,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

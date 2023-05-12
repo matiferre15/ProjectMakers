@@ -12,17 +12,12 @@ export class AppComponent {
   title = 'client';
   userLogueado: User;
 
-  constructor(private loginComponent: LoginComponent){
+  constructor(private loginComponent: LoginComponent, public authService: AuthService){
 
   }
 
   public visualizarMenu(): boolean{
-    if(this.loginComponent.userLogueado){
-      console.log('hola')
-      return true
-    }
-    else{
-      return false
-    }
+    console.log(this.authService.getLoginSuccess());
+    return this.authService.getLoginSuccess();
   }
 }

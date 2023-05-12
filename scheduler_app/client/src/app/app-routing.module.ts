@@ -17,10 +17,6 @@ const routes: Routes = [
     component: CalendarioComponent
   },
   {
-    path: 'agenda',
-    component: AgendaComponent
-  },
-  {
     path: 'reunion',
     component: ReunionComponent
   },
