@@ -1,1 +1,35 @@
-<p>home works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h2>{{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
+        </div>
+        <div class="card-body">
+          <p class="display-3">{{ weatherData.main.temp }}°C</p>
+          <p>Description: {{ weatherData.weather[0].description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <div class="row"><h1>Mis reuniones</h1></div>
+  <div class="row">
+    <br />
+
+    <div class="col-md-4" *ngFor="let reunion of agenda">
+      <div class="card text-center">
+        <div
+          class="card-header bg-dark text-white d-flex justify-content-between align-items-center"
+        >
+          {{ reunion.nombre }}
+        </div>
+
+        <div class="card-body">
+          {{ reunion.fecha }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
