@@ -13,7 +13,7 @@ export class AuthService {
   private _userId: string;
   private _loginSuccess: boolean;
 
-  API_URI = 'http://localhost:3000/api';
+  API_URI = 'https://backend-makers-production.up.railway.app/api';
 
   constructor(private http: HttpClient) { }
 

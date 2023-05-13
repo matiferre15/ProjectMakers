@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AgendaService {
 
-  API_URI = 'http://localhost:3000/api';
+  API_URI = 'https://backend-makers-production.up.railway.app/api';
 
   constructor(private http: HttpClient) {  }
 
